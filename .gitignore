@@ -1,0 +1,16 @@
+# Rust
+target/
+
+# Python
+__pycache__/
+gui/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python build artifacts
+gui/build
+gui/*.egg-info/
+
+# Virtual environments
+gui/venv
