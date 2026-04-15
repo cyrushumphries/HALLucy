@@ -4,7 +4,7 @@ from musicvfx.widgets.node_editor import NodeEditor
 
 def setup_main_window():
     dpg.create_context()
-    dpg.create_viewport(title="pyMusicVFX", width=1600, height=900)
+    dpg.create_viewport(title="MusicVFX", width=1600, height=900)
 
     with dpg.window(label="DockSpace", tag="DockSpace", no_title_bar=True, no_close=True):
         dpg.add_text("Main Dockspace")
