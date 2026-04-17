@@ -1,3 +1,5 @@
+import uuid
+
 class Node:
     """
     A basic node class for all the nodes to be placed on the GUI.
@@ -12,12 +14,12 @@ class Node:
     NAME = "Node"
     CATEGORY = "generic"
 
-    def __init__(self, node_id):
-        self.id = node_id
+    def __init__(self):
+        self.id_ = f"Node_{uuid.uuid4().hex}"
         self.position = (0, 0)
         self.ports = self.define_ports()
 
-        # assign back-reference TODO check if var is defined in port
+        # update back-reference in Port
         for port in self.ports:
             port.node = self
 
@@ -28,7 +30,7 @@ class Node:
         """
         return []
 
-    def build_ui(self, dpg_node_id): #TODO rename
+    def build_ui(self): #TODO rename
         """
         Override in subclasses to build the node's UI.
         """
