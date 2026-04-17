@@ -15,25 +15,47 @@ class NodeGraph:
 
     def __init__(self):
         self.nodes = {} # map of id -> Node object
-        self.connections = [] # list of PortConnection's #TODO change to id -> PortConnection map
-        self._next_id = 1 #TODO replace by uuid
+        self.ports = {} # map of id -> NodePort object
+        self.connections = {} # map of id -> PortConnection object
 
-    def add_node(self, node_cls): #TODO rename variable
-        node_id = self._next_id
-        self._next_id += 1
-
-        node = node_cls(node_id)
-        self.nodes[node_id] = node
+    def add_node(self, node_class):
+        node = node_class()
+        if node.id_ not in self.nodes:
+            self.nodes[node.id_] = node # add new node to register
+            for port in node.ports:
+                self._add_port(port)
         return node
+        
+    def remove_node(self, id_):
+        if id_ in self.nodes:
+            node_to_remove = self.nodes[id_]
+            for port in node_to_remove.ports:
+                self._remove_port(port.id_)
+            del self.nodes[id_]
 
-    def connect(self, src_port, dst_port):
-        conn = PortConnection(src_port, dst_port)
-        self.connections.append(conn)  # append to connection register
-        return conn
+    def _add_port(self, port_class):
+        if port_class.id_ not in self.ports:
+            self.ports[port_class.id_] = port_class
+
+    def _remove_port(self, id_):
+        if id_ in self.ports:
+            # Remove port from register
+            del self.ports[id_]
+
+            # now check if connections are using the port and delete those connections
+            to_delete = [
+                connection_id for connection_id, connection in self.connections.items()
+                if connection.src == id_ or connection.dst ==id_
+            ]
+            for connection_id in to_delete:
+                del self.connections[connection_id]
+
+    def connect(self, src_port_id, dst_port_id):
+        if (src_port_id in self.ports) and (dst_port_id in self.ports):
+            conn = PortConnection(src_port_id, dst_port_id)
+            self.connections[conn.id_] = conn  # add new PortConnection to register
+            return conn
     
-    def disconnect(self, src_port, dst_port):
-        # remove from connection register TODO change to an id -> connection mapping as in the other pyMusicVFX, makes removal simpler
-        self.connections = [
-            c for c in self.connections
-            if not (c.src == src_port and c.dst == dst_port)
-        ]
+    def disconnect(self, connection_id):
+        if connection_id in self.connections:
+            del self.connections[connection_id]
