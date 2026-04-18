@@ -27,7 +27,7 @@ class NodeEditor:
         Draw a node inside the node editor.
         """
         with dpg.node(label=node.NAME, parent=self.id_, tag=node.id_, user_data=node.id_):
-            for port in node.ports.values():
+            for port in node.ports:
                 # INPUT PORTS always on the left side
                 if port.direction == "in":
                     with dpg.node_attribute(
