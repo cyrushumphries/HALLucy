@@ -1,6 +1,7 @@
 import dearpygui.dearpygui as dpg
+from musicvfx.graph.node_graph import NodeGraph
 from musicvfx.widgets.node_editor import NodeEditor
-
+from musicvfx.nodes.audio.oscillator import Oscillator
 
 def setup_main_window():
     dpg.create_context()
@@ -10,9 +11,6 @@ def setup_main_window():
         dpg.add_text("Main Dockspace")
         dpg.add_spacer(height=5)
         dpg.add_separator()
-
-    with dpg.window(label="Node Graph"):
-        dpg.add_text("Node graph will go here")
 
     with dpg.window(label="3D Preview"):
         dpg.add_text("OpenGL preview will go here")
@@ -24,18 +22,16 @@ def setup_main_window():
         dpg.add_text("FFT, beat detection, etc.")
         
     # # Create the node editor
-    # editor = NodeEditor(graph)
-    # editor.create()
+    graph = NodeGraph()
+    editor = NodeEditor(graph)
+    editor.create()
     
-    # block1 = MathAdd()
-    # block2 = MathAdd()
-    # block3 = MathAdd()
-    # graph.add_block(block1)
-    # graph.add_block(block2)
-    # graph.add_block(block3)
-    # editor.draw_block(block1)    
-    # editor.draw_block(block2)
-    # editor.draw_block(block3)
+    node1 = graph.add_node(Oscillator)
+    node2 = graph.add_node(Oscillator)
+    node3 = graph.add_node(Oscillator)
+    editor.draw_node(node1)    
+    editor.draw_node(node2)
+    editor.draw_node(node3)
 
     dpg.setup_dearpygui()
     dpg.show_viewport()
