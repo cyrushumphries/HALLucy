@@ -3,29 +3,45 @@ from musicvfx.graph.node_graph import NodeGraph
 from musicvfx.widgets.node_editor import NodeEditor
 from musicvfx.nodes.audio.oscillator import Oscillator
 
+# Calculate default layout (3 docks, left top half, left bottom half, right ) (left 20%, right 80%)
+# This fixes the layout to a static layout, as soon as the windows is reseized, the default layout will be back
+def on_viewport_resize():
+    w = dpg.get_viewport_client_width()
+    h = dpg.get_viewport_client_height()
+    # print(f"Viewport resized → {w} x {h}")
+    left_width = int(w*0.20)
+    left_height = int(h*0.5)
+    right_width = int(w*0.8)
+    right_height = h
+    properties_coord = (0,0)
+    explorer_coord = (0,left_height)
+    editor_coord = (left_width,0)
+    dpg.set_item_height(item="PropertiesWindow",height=left_height)
+    dpg.set_item_width(item="PropertiesWindow",width=left_width)
+    dpg.set_item_pos(item="PropertiesWindow",pos=properties_coord)
+    dpg.set_item_height(item="NodeExplorerWindow",height=left_height)
+    dpg.set_item_width(item="NodeExplorerWindow",width=left_width)
+    dpg.set_item_pos(item="NodeExplorerWindow",pos=explorer_coord)
+    dpg.set_item_height(item="NodeEditorWindow",height=right_height)
+    dpg.set_item_width(item="NodeEditorWindow",width=right_width)
+    dpg.set_item_pos(item="NodeEditorWindow",pos=editor_coord)
+
 def setup_main_window():
-    dpg.create_context()
-    dpg.create_viewport(title="MusicVFX", width=1600, height=900)
-
-    with dpg.window(label="DockSpace", tag="DockSpace", no_title_bar=True, no_close=True):
-        dpg.add_text("Main Dockspace")
-        dpg.add_spacer(height=5)
-        dpg.add_separator()
-
-    with dpg.window(label="3D Preview"):
-        dpg.add_text("OpenGL preview will go here")
-
-    with dpg.window(label="Inspector"):
-        dpg.add_text("Block parameters will appear here")
-
-    with dpg.window(label="Audio Analyzer"):
-        dpg.add_text("FFT, beat detection, etc.")
-        
-    # # Create the node editor
+    dpg.set_viewport_resize_callback(on_viewport_resize)
+    
+    # Create graph and node editor
     graph = NodeGraph()
     editor = NodeEditor(graph)
     editor.create()
-    
+
+    # Create Properties Window
+    with dpg.window(label="Properties", tag="PropertiesWindow"):
+        pass
+
+    # Create Node Explorer
+    with dpg.window(label="Node Explorer", tag="NodeExplorerWindow"):
+        pass
+        
     node1 = graph.add_node(Oscillator)
     node2 = graph.add_node(Oscillator)
     node3 = graph.add_node(Oscillator)
@@ -33,6 +49,4 @@ def setup_main_window():
     editor.draw_node(node2)
     editor.draw_node(node3)
 
-    dpg.setup_dearpygui()
-    dpg.show_viewport()
-
+    dpg.maximize_viewport()
