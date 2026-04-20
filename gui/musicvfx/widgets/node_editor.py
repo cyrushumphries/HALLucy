@@ -15,7 +15,9 @@ class NodeEditor:
 
     def create(self):
         """Create the DearPyGui node editor widget."""
-        with dpg.window(label="Node Editor", tag="NodeEditorWindow"):
+        with dpg.window(label="Node Editor", 
+                        tag="NodeEditorWindow",
+                        no_close=True):
             self.id_ = dpg.add_node_editor(
                 callback=self._link_callback,
                 delink_callback=self._delink_callback,
