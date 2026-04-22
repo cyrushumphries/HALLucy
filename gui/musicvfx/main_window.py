@@ -1,7 +1,9 @@
 import dearpygui.dearpygui as dpg
 from musicvfx.graph.node_graph import NodeGraph
 from musicvfx.widgets.node_editor import NodeEditor
+from musicvfx.widgets.node_explorer import NodeExplorer
 from musicvfx.nodes.audio.oscillator import Oscillator
+from musicvfx.nodes.node_registry import NodeRegistry
 
 # Calculate default layout (3 docks, left top half, left bottom half, right ) (left 20%, right 80%)
 # This fixes the layout to a static layout, as soon as the windows is reseized, the default layout will be back
@@ -34,19 +36,15 @@ def setup_main_window():
     editor = NodeEditor(graph)
     editor.create()
 
+    # Create Node Explorer
+    reg=NodeRegistry()
+    reg.discover()
+    explorer = NodeExplorer(registry=reg)
+    explorer.create()
+
     # Create Properties Window
     with dpg.window(label="Properties", tag="PropertiesWindow"):
         pass
 
-    # Create Node Explorer
-    with dpg.window(label="Node Explorer", tag="NodeExplorerWindow"):
-        pass
-        
-    node1 = graph.add_node(Oscillator)
-    node2 = graph.add_node(Oscillator)
-    node3 = graph.add_node(Oscillator)
-    editor.draw_node(node1)    
-    editor.draw_node(node2)
-    editor.draw_node(node3)
-
     dpg.maximize_viewport()
+    
