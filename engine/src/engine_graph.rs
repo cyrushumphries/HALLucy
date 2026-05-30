@@ -31,7 +31,8 @@ pub enum PortType {
 
 //The engine graph has nodes and connections between the nodes 
 pub struct EngineGraph {
-    pub nodes: HashMap<NodeId, Box<dyn EngineNode>>, //dyn -> Nodes will be of different types but all type will be impelemting the EngineNode Trait
+    //map between NodeID and pointer to EngineNode
+    pub nodes: HashMap<String, Box<dyn EngineNode>>, //dyn -> Nodes will be of different types but all type will be impelemting the EngineNode Trait
     //Box -> Rust needs all items in a collection to be of dame size, which is impossible with different Node types
     //Box is a fixed size pointer to the heap, nodes will be on the heap, hashmap stores the pointers
     pub connections: Vec<EngineConnection>,
