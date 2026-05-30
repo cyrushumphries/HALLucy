@@ -14,7 +14,7 @@ def on_viewport_resize():
     left_width = int(w*0.20)
     left_height = int(h*0.5)
     right_width = int(w*0.8)
-    right_height = h
+    right_height = int(h)
     properties_coord = (0,0)
     explorer_coord = (0,left_height)
     editor_coord = (left_width,0)
