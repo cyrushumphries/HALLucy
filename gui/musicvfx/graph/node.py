@@ -15,7 +15,7 @@ class Node:
     CATEGORY = "generic"
 
     def __init__(self):
-        self.id_ = f"Node_{uuid.uuid4().hex}"
+        self.calculate_id()
         self.position = (0, 0)
         self.ports = self.define_ports()
 
@@ -35,3 +35,6 @@ class Node:
         Override in subclasses to build the node's UI.
         """
         pass
+
+    def calculate_id(self):
+        self.id_ = f"Node_{uuid.uuid4().hex}"

@@ -20,7 +20,9 @@ class NodeGraph:
 
     def add_node(self, node_class):
         node = node_class()
-        if node.id_ not in self.nodes:
+        while(node.id_ in self.nodes): # if node.id_ already existing, we need to recalculate a new id. ID needs to be unique
+            node.calculate_id()
+        if node.id_ not in self.nodes: #TODO propper handling if id_ already exists, should recalculate id_
             self.nodes[node.id_] = node # add new node to register
             for port in node.ports:
                 self._add_port(port)
