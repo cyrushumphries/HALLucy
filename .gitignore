@@ -14,3 +14,6 @@ gui/*.egg-info/
 
 # Virtual environments
 gui/venv
+
+# VSCode stuff
+.vscode/
