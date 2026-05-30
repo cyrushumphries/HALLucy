@@ -1,0 +1,5 @@
+# GLOBAL CONSTANTS
+SCREEN_SCALING = {"50%":0.5, "75%":0.75, "100%":1.0, "150%":1.5,"200%":2.0,"250%":2.5, "300%":3.0}
+
+# USER SELECTED CONFIG
+scale_factor = SCREEN_SCALING["100%"]
