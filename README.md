@@ -1,63 +1,78 @@
-# MusicVFX
+# HALLucy
 
-**MusicVFX** is a visual programming tool for creating real time music and real time music visualisations.
+**HALLucy** is a creative unified visual programming environment for building real‑time music, real‑time visual effects, and audio‑reactive art.
 
-**MusicVFX** allows you to:
-- create music,
-- create visualisations and visual effects based on your created music or other music inputs.
+With **HALLucy** you can:
+- create music using modular building blocks,
+- design visualisations and VFX that react to sound,
+- create generative art driven by audio,
+- experiment freely through an intuitive visual programming interface,
+- be guided through your creative flow by the onboarded intelligence **Lucy**
 
-All via an easy to use visual programming interface, by visualy chaining different types of building blocks together.
-
-Idealy this visual programming can be extended to tangible programming using physical tokens.
-
+In the future, **HALLucy** will also support tangible programming using physical tokens.
 
 ## About
 
 ### Inspiration
-Years ago, i discovered the (now archieved) vsxu project by [vovoid](https://github.com/vovoid/vsxu), but never had the time to actually do something with it. VSXU focus was creating visuals based on music using a visual programming language. I tried rewiving the project in my lab, but bumped quickly into runtime segmentation faults, which where to difficult for me to debug, due to lack of knowledge on the used tech stack.
+Years ago, I discovered the (now archived) VSXU project by [vovoid](https://github.com/vovoid/vsxu). Its visual programming approach to audio-reactice graphics fascinated me, but the project was difficult to revive due to runtime segmentation faults and an, for me, complex and unfamiliar tech stack.
 
-Another inspiration is the Reactable project with tangible tokens to create music. This project also discontinued.
-The Reactable focused on creating music only using tangible elements, whcih is still very similar to visual programming.
+Another source of inspiration is the [Reactable](https://reactable.com/), a tangible music instrument powered by [reacTIVision](https://github.com/mkalten/reacTIVision). Its physical tokens are essentially a form of visual programming.
 
-The idea of MusicVFX is to combine both, the music production and the visual effects production, in one visual programming environment which idealy, at a later stage, can use tangible tokens to create art.
+**HALLucy** aims to combine both worlds: **real-time music production + visual effects + visual programming**,\
+with the long-term goal of supporting tangible tokens for hands-on creativity.
 
 > [!NOTE]
 > No code from both inspiration projects has been used. 
 
 ### The Project
 
-To combine the visual programming, with the real-time music and visualisation production aspect,
-**MusicVFX** is build on two technologies:
-- Python: for the graphical userinterface and visual programming, easy extendable and fast to setup using dearpygui,
-- Rust: for the engine, due to its high performance requirments to compute in (near) real-time.
+To combine the visual programming, with the real-time music and visual processing,
+**HALLucy** is build on two technologies:
+- Python: for the graphical user interface and visual programming (using DearPyGui),
+- Rust: for the high-performance engine, that must compute audio and visuals in (near) real-time.
+
+This project is also my personal journey into learning Rust.
 
 ### Currently Supported Features
 
-- Visual Programming using a Visual Graph Editor and drag-drop functionality
-- Node Explorer to list all available building nodes
-- Nodes:
-  - Audio:
-    - Osc
-
+- Visual programming using a node-based graph editor
+- Drag-and-drop node creation
+- Node Explorer listing all available building nodes
+- Basic nodes (no real computation yet)
 
 ### Roadmap
+- Rust engine with real-time audio processing
+- Binding-layer between Python-gui and Rust-engine
+- Actual audio node processing
+- More node types for audio
+- Lucy: your guiding intelligence with how-to's, tricks and tutorials
+- Extending to the vfx aspect with shader pipeline
+- More node types for vfx
+- ...
+- (much later) Tangible Tokens
 
-## How to setup MusicVFX
+### Why HALLucy?
 
+The name combines:
+- **HALL**: a classic reverb type in audio
+- **Hallucination**: surreal, dreamlike visual effects
+- **Lucy**: the creative intelligence guiding you through the system
+
+Forming **HALLucy** an environment where sound and vision blend into creative hallucinations.
 
 ## Contributors
 
-(**cyrushumphries**) [https://github.com/cyrushumphries]
+[**cyrushumphries**](https://github.com/cyrushumphries)
 
 ## Licence
 
 [![Licence EUPL-1.2](https://img.shields.io/badge/Licence-EUPL--1.2-blue)](LICENCE)
 
-**MusicVFX**
+**HALLucy**
 
-Copyright &copy; 2026  **MusicVFX Contributors** (see [README.md](README.md))
+Copyright &copy; 2026  **cyrushumphries**
 
-Licensed under the EUPL-1.2 (the "Licence");
-You may not use this work except in compliance with the Licence.
-You may obtain a copy of the Licence, available in the 23 official
+Licensed under the EUPL-1.2 (the "Licence");\
+You may not use this work except in compliance with the Licence.\
+You may obtain a copy of the Licence, available in the 23 official\
 languages of the European Union, at: <https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12>
