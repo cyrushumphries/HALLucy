@@ -1,5 +1,5 @@
 [package]
-name = "musicvfx_bindings"
+name = "hallucy_bindings"
 version = "0.1.0"
 edition = "2024"
 
@@ -8,4 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.28.3", features = ["extension-module"] }
-musicvfx_engine = { path = "../engine" }
+hallucy_engine = { path = "../engine" }

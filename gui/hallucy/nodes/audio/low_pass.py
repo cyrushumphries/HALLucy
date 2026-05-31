@@ -1,18 +1,18 @@
-from musicvfx.graph.node import Node
-from musicvfx.graph.node_port import NodePort
+from hallucy.graph.node import Node
+from hallucy.graph.node_port import NodePort
 
-class Gain(Node):
-    NAME = "Gain"
+class LowPass(Node):
+    NAME = "Low Pass"
     CATEGORY = "Audio"
 
     def __init__(self):
         super().__init__()
-        self.gain = 1.0  # default gain value
+        self.cutoff = 1000.0  # default cutoff frequency
 
     def define_ports(self):
         return [
             NodePort(name="in", direction="in", port_type="audio"),
-            NodePort(name="gain", direction="in", port_type="float"),
+            NodePort(name="cutoff", direction="in", port_type="float"),
             NodePort(name="out", direction="out", port_type="audio"),
         ]
 

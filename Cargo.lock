@@ -320,15 +320,15 @@ dependencies = [
 ]
 
 [[package]]
-name = "musicvfx_bindings"
+name = "hallucy_bindings"
 version = "0.1.0"
 dependencies = [
- "musicvfx_engine",
+ "hallucy_engine",
  "pyo3",
 ]
 
 [[package]]
-name = "musicvfx_engine"
+name = "hallucy_engine"
 version = "0.1.0"
 dependencies = [
  "fundsp",

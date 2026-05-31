@@ -1,9 +1,9 @@
 import dearpygui.dearpygui as dpg
-from musicvfx.graph.node_graph import NodeGraph
-from musicvfx.widgets.node_editor import NodeEditor
-from musicvfx.widgets.node_explorer import NodeExplorer
-from musicvfx.nodes.audio.oscillator import Oscillator
-from musicvfx.nodes.node_registry import NodeRegistry
+from hallucy.graph.node_graph import NodeGraph
+from hallucy.widgets.node_editor import NodeEditor
+from hallucy.widgets.node_explorer import NodeExplorer
+from hallucy.nodes.audio.oscillator import Oscillator
+from hallucy.nodes.node_registry import NodeRegistry
 
 # Calculate default layout (3 docks, left top half, left bottom half, right ) (left 20%, right 80%)
 # This fixes the layout to a static layout, as soon as the windows is reseized, the default layout will be back

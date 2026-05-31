@@ -1,5 +1,5 @@
 use pyo3::prelude::*;
-use musicvfx_engine::*;
+use hallucy_engine::*;
 
 #[pyclass]
 pub struct RustEngine {

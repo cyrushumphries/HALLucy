@@ -2,7 +2,7 @@ import pkgutil
 import importlib
 import inspect
 
-from musicvfx.graph.node import Node
+from hallucy.graph.node import Node
 
 class NodeRegistry:
     """ Automatic register of all nodes defined under musicvfx.nodes. """

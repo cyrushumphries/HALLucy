@@ -1,5 +1,5 @@
-from musicvfx.graph.node import Node
-from musicvfx.graph.node_port import NodePort
+from hallucy.graph.node import Node
+from hallucy.graph.node_port import NodePort
 
 class Oscillator(Node):
     """
