@@ -14,7 +14,7 @@ In the future, **HALLucy** will also support tangible programming using physical
 ## About
 
 ### Inspiration
-Years ago, I discovered the (now archived) VSXU project by [vovoid](https://github.com/vovoid/vsxu). Its visual programming approach to audio-reactice graphics fascinated me, but the project was difficult to revive due to runtime segmentation faults and an, for me, complex and unfamiliar tech stack.
+Years ago, I discovered the (now archived) VSXU project by [vovoid](https://github.com/vovoid/vsxu). Its visual programming approach to audio-reactive graphics fascinated me, but the project was difficult to revive due to runtime segmentation faults and an, for me, complex and unfamiliar tech stack.
 
 Another source of inspiration is the [Reactable](https://reactable.com/), a tangible music instrument powered by [reacTIVision](https://github.com/mkalten/reacTIVision). Its physical tokens are essentially a form of visual programming.
 
